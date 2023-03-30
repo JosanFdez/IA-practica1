@@ -20,6 +20,8 @@ class ComportamientoJugador : public Comportamiento{
       last_action = actIDLE;
       bien_situado = false;
       girar_derecha = false;
+      con_zapatillas = false;
+      con_bikini = false;
       // Dar el valor inicial a las variables de estado
     }
 
@@ -37,6 +39,8 @@ class ComportamientoJugador : public Comportamiento{
     Action last_action;
     bool girar_derecha;
 	  bool bien_situado;
+    bool con_zapatillas;
+    bool con_bikini;
 };
 
 #endif

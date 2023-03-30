@@ -271,7 +271,18 @@ Action ComportamientoJugador::think(Sensores sensores){
         PonerTerrenoEnMatriz(sensores.terreno, current_state, mapaResultado);
     }
 
-    if(sensores.terreno[2] == 'T' or sensores.terreno[2] == 'S' or sensores.terreno[2] == 'G' and sensores.superficie[2] == '_'){
+    if(sensores.terreno[0] == 'K' and !con_bikini){
+
+        con_bikini = true;
+    }
+
+    if(sensores.terreno[0] == 'D' and !con_zapatillas){
+
+        con_zapatillas = true;
+    }
+
+    if((sensores.terreno[2] == 'T' or sensores.terreno[2] == 'S' or sensores.terreno[2] == 'G' or sensores.terreno[2] == 'K' or 
+       sensores.terreno[2] == 'D' or (sensores.terreno[2] == 'B' and con_zapatillas) or (sensores.terreno[2] == 'A' and con_bikini)) and sensores.superficie[2] == '_'){
 
         accion = actFORWARD;
     }
@@ -282,7 +293,7 @@ Action ComportamientoJugador::think(Sensores sensores){
     }
     else {
 
-        accion = actTURN_SR;
+        accion = actTURN_BR;
         girar_derecha = (rand()%2 ==0);
     }
 
