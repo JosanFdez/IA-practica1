@@ -22,6 +22,9 @@ class ComportamientoJugador : public Comportamiento{
       girar_derecha = false;
       con_zapatillas = false;
       con_bikini = false;
+      tamanio = size;
+      encontrado = false;
+      fil = col = 100;
       // Dar el valor inicial a las variables de estado
     }
 
@@ -31,7 +34,9 @@ class ComportamientoJugador : public Comportamiento{
     Action think(Sensores sensores);
     int interact(Action accion, int valor);
     void PonerTerrenoEnMatriz(const vector<unsigned char> &terreno, const state &st, vector<vector<unsigned char>> &matriz);
-
+    void PintarPrecipicios();
+    int numeroPos(unsigned char p, const vector<unsigned char> &terreno);
+    void irA(int p);
   private:
   
   // Declarar aquí las variables de estado
@@ -41,6 +46,11 @@ class ComportamientoJugador : public Comportamiento{
 	  bool bien_situado;
     bool con_zapatillas;
     bool con_bikini;
+    int tamanio;
+    bool encontrado;
+    int fil;
+    int col;
+    
 };
 
 #endif

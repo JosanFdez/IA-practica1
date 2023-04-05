@@ -159,9 +159,66 @@ void ComportamientoJugador::PonerTerrenoEnMatriz(const vector<unsigned char> &te
         }
     }
 
+void ComportamientoJugador::PintarPrecipicios(){
+
+    for (int i = 0; i < tamanio; i++){
+        
+        for (int j = 0; j < tamanio; j++){
+
+            if((i < 3)  or (j < 3) or (j > (tamanio - 3)) or i > (tamanio - 3)){
+
+                mapaResultado[i][j] = 'P';
+            }
+        }
+        
+    }
+}
+
+int ComportamientoJugador::numeroPos(unsigned char p, const vector<unsigned char> &terreno){
+
+    int posicionamiento = - 1;
+    bool encontrado = false;
+    for (int i = 0; i < terreno.size() and !encontrado; i++){
+        
+        if(terreno[i] == p){
+
+            posicionamiento = i;
+            encontrado = true;
+        }
+    }
+
+    return posicionamiento;
+    
+}
+//En función de la posición de la que quiera ir dentro del campo de visión hacemos las siguientes acciones:
+// Casillas 1 4 9 --> turnSL
+// Casillas 3 8 15 --> turnSR
+// Resto Forward
+
+void ComportamientoJugador::irA(int p){
+
+    if (p == 1 or p == 4 or p == 9){
+
+        actTURN_SL;
+    }
+    else if (p == 3 or p == 8 or p == 15){
+
+        actTURN_SR;
+    }
+    else {
+
+        actFORWARD;
+    }
+
+}
+
 Action ComportamientoJugador::think(Sensores sensores){
 
 	Action accion = actIDLE;
+
+    encontrado = false;
+
+    
 
 	cout << "Posicion: fila " << sensores.posF << " columna " << sensores.posC << " ";
 
@@ -256,6 +313,16 @@ Action ComportamientoJugador::think(Sensores sensores){
     
     }
 
+    PintarPrecipicios();
+
+    if(sensores.reset){
+
+        con_bikini = false;
+        con_zapatillas = false;
+        bien_situado = false;
+    }
+
+
     // Nos sirve para saber cuando estamos bien posicionado y así salvar las posiciones y orientacion del agente
     if (sensores.terreno[0] == 'G' and !bien_situado){
 
@@ -281,14 +348,94 @@ Action ComportamientoJugador::think(Sensores sensores){
         con_zapatillas = true;
     }
 
+int p;
+
+if (!bien_situado){
+
+        p = numeroPos('G', sensores.terreno);
+
+        cout << "Mi posición es " << p << endl;
+
+        accion = actFORWARD;
+
+        if (p != -1){
+
+            encontrado = true;
+        }
+
+        if (p == 1 or p == 4 or p == 9){
+
+            accion = actTURN_SL;
+        }
+        if (p == 3 or p == 8 or p == 15){
+
+            accion = actTURN_SR;
+        }
+}
+
+int z;
+if(!con_zapatillas and !encontrado){
+
+    z = numeroPos('K', sensores.terreno);
+
+        cout << "Mi posición es " << z << endl;
+
+        accion = actFORWARD;
+
+        if (z != -1){
+
+            encontrado = true;
+        }
+        if (z == 1 or z == 4 or z == 9){
+
+            accion = actTURN_SL;
+        }
+        if (z == 3 or z == 8 or z == 15){
+
+            accion = actTURN_SR;
+        }
+}
+
+int k;
+if(!con_bikini and !encontrado){
+
+    k = numeroPos('K', sensores.terreno);
+
+        cout << "Mi posición es " << k << endl;
+
+        accion = actFORWARD;
+
+        if(k != -1){
+
+            encontrado = true;
+        }
+        if (k == 1 or k == 4 or k == 9){
+
+            accion = actTURN_SL;
+        }
+        if (k == 3 or k == 8 or k == 15){
+
+            accion = actTURN_SR;
+        }
+}
+
+
+    if (!encontrado){
+
     if((sensores.terreno[2] == 'T' or sensores.terreno[2] == 'S' or sensores.terreno[2] == 'G' or sensores.terreno[2] == 'K' or 
        sensores.terreno[2] == 'D' or (sensores.terreno[2] == 'B' and con_zapatillas) or (sensores.terreno[2] == 'A' and con_bikini)) and sensores.superficie[2] == '_'){
 
         accion = actFORWARD;
     }
+    else if((sensores.terreno[0] == 'B' and !con_zapatillas) or (sensores.terreno[0] == 'A' and !con_bikini)){
+
+        accion = actFORWARD;
+
+    }
+
     else if(!girar_derecha){
 
-        accion = actTURN_SL;
+        accion = actTURN_BL;
         girar_derecha = (rand()%2 ==0);
     }
     else {
@@ -296,11 +443,13 @@ Action ComportamientoJugador::think(Sensores sensores){
         accion = actTURN_BR;
         girar_derecha = (rand()%2 ==0);
     }
-
+    
+    }
     last_action = accion;
 	return accion;
 }
 
 int ComportamientoJugador::interact(Action accion, int valor){
+  
   return false;
 }
