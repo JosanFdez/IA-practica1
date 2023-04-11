@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "2.8"
@@ -25,7 +25,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "",
 			"projects" : 
 			[
 				{
@@ -51,49 +51,49 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "GLUILib::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-GLUILib-Debug-4b4aed9a563ebdf214d2.json",
+					"jsonFile" : "target-GLUILib-331b4c201573b36dd4a7.json",
 					"name" : "GLUILib",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "comportamientosLib::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-comportamientosLib-Debug-a9f3da823cb2f12c5c3a.json",
+					"jsonFile" : "target-comportamientosLib-6e0d07293b8f3ca48611.json",
 					"name" : "comportamientosLib",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "modelosBelkanLib::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-modelosBelkanLib-Debug-1ca0f7f2cbdd73506ccd.json",
+					"jsonFile" : "target-modelosBelkanLib-5d966fba9944494daaa6.json",
 					"name" : "modelosBelkanLib",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "motorLib::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-motorLib-Debug-50f459374bfd3d535479.json",
+					"jsonFile" : "target-motorLib-1e344591af514d4fcfe9.json",
 					"name" : "motorLib",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "obj3DLib::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-obj3DLib-Debug-75d3fdb3427dbd0acbb2.json",
+					"jsonFile" : "target-obj3DLib-9d6263490a91ee07c24c.json",
 					"name" : "obj3DLib",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "practica1::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-practica1-Debug-8122764fc4f1100bc62e.json",
+					"jsonFile" : "target-practica1-f32cc93311f5eb9f4bc5.json",
 					"name" : "practica1",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "practica1SG::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-practica1SG-Debug-9d1c86b043baa4bfd758.json",
+					"jsonFile" : "target-practica1SG-d9bf5d2bd64cdbbe6647.json",
 					"name" : "practica1SG",
 					"projectIndex" : 0
 				}
